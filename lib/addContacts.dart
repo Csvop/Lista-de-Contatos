@@ -10,28 +10,27 @@ class ContactForm extends StatefulWidget {
 }
 
 class ContactFormState extends State<ContactForm> {
-  final nome = TextEditingController();
+  final name = TextEditingController();
   final email = TextEditingController();
-  final telefone = TextEditingController();
-  final sexo = TextEditingController();
+  final phoneNumber = TextEditingController();
+  final sex = TextEditingController();
 
-  bool m = false; 
+  bool m = false;
   bool f = false;
 
   var sexLetter;
 
   void _printLatestValue() {
-    print('${nome.text}');
+    print('${name.text}');
   }
 
   @override
   void initState() {
-  super.initState();
+    super.initState();
 
-  // Start listening to changes.
-  nome.addListener(_printLatestValue);
-}
-
+    // Start listening to changes.
+    name.addListener(_printLatestValue);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +44,11 @@ class ContactFormState extends State<ContactForm> {
             children: <Widget>[
               TextFormField(
                 decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Insert your name here',
-                labelText: 'Name',
+                  icon: Icon(Icons.person),
+                  hintText: 'Insert your name here',
+                  labelText: 'Name',
                 ),
-                controller: nome,
+                controller: name,
               ),
               Container(
                 width: 20,
@@ -57,9 +56,9 @@ class ContactFormState extends State<ContactForm> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Insert your email here',
-                labelText: 'Email',
+                  icon: Icon(Icons.mail_outline),
+                  hintText: 'Insert your email here',
+                  labelText: 'Email',
                 ),
                 controller: email,
               ),
@@ -69,18 +68,18 @@ class ContactFormState extends State<ContactForm> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Insert your telefone number here',
-                labelText: 'Telefone Number',
+                  icon: Icon(Icons.phone),
+                  hintText: 'Insert your telefone number here',
+                  labelText: 'Telefone Number',
                 ),
-                controller: telefone,
+                controller: phoneNumber,
               ),
               Container(
                 width: 20,
                 height: 20,
               ),
               Checkbox(
-                value: m, 
+                value: m,
                 onChanged: (bool value) {
                   setState(() {
                     m = value;
@@ -90,7 +89,7 @@ class ContactFormState extends State<ContactForm> {
                 },
               ),
               Checkbox(
-                value: f, 
+                value: f,
                 onChanged: (bool value) {
                   setState(() {
                     f = value;
@@ -104,18 +103,15 @@ class ContactFormState extends State<ContactForm> {
                 height: 20,
               ),
               ElevatedButton(
-                style:
-                  ElevatedButton.styleFrom(
-                  onPrimary: Colors.white,
-                  primary: Colors.purple,
+                style: ElevatedButton.styleFrom(
                   onSurface: Colors.grey,
                   side: BorderSide(color: Colors.black, width: 1),
                   elevation: 20,
-                  minimumSize: Size(150,50),
+                  minimumSize: Size(150, 50),
                 ),
                 onPressed: () {
                   var sex = ('M' == sexLetter)?0:1;
-                  Navigator.pop(context, Contact(nome.text, sex, telefone.text, email.text,));
+                  Navigator.pop(context, Contact(name.text, sex, phoneNumber.text, email.text,));
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
                 },
