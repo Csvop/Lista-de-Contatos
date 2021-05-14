@@ -15,6 +15,9 @@ class ContactFormState extends State<ContactForm> {
   final telefone = TextEditingController();
   final sexo = TextEditingController();
 
+  bool m = false; 
+  bool f = false;
+
   void _printLatestValue() {
     print('${nome.text}');
   }
@@ -74,13 +77,23 @@ class ContactFormState extends State<ContactForm> {
                 width: 20,
                 height: 20,
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'Insert M for Man or F for Woman',
-                labelText: 'Sex',
-                ),
-                controller: sexo,
+              Checkbox(
+                value: m, 
+                onChanged: (bool value) {
+                  setState(() {
+                    m = value;
+                    f = false;
+                  });
+                },
+              ),
+              Checkbox(
+                value: f, 
+                onChanged: (bool value) {
+                  setState(() {
+                    f = value;
+                    m = false;
+                  });
+                },
               ),
               Container(
                 width: 20,
