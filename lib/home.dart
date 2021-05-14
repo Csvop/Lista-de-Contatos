@@ -48,18 +48,20 @@ class _ContactListScreenState extends State<ContactListScreen> {
       body: ListView.builder(
         itemCount: contactList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: ContactAvi(contactList[index], 40),
-            title: Text(contactList[index].name),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      ContactDetails(contact: contactList[index]),
-                ),
-              );
-            },
+          return Card(
+            child: ListTile(
+              leading: ContactAvi(contactList[index], 40),
+              title: Text(contactList[index].name),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ContactDetails(contact: contactList[index]),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),

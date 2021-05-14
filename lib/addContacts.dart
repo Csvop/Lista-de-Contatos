@@ -55,7 +55,7 @@ class ContactFormState extends State<ContactForm> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.mail_outline),
                 hintText: 'Insert your email here',
                 labelText: 'Email',
                 ),
@@ -67,7 +67,7 @@ class ContactFormState extends State<ContactForm> {
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.phone),
                 hintText: 'Insert your telefone number here',
                 labelText: 'Telefone Number',
                 ),
@@ -102,18 +102,16 @@ class ContactFormState extends State<ContactForm> {
               ElevatedButton(
                 style:
                   ElevatedButton.styleFrom(
-                  onPrimary: Colors.white,
-                  primary: Colors.purple,
-                  onSurface: Colors.grey,
-                  side: BorderSide(color: Colors.black, width: 1),
-                  elevation: 20,
-                  minimumSize: Size(150,50),
-                ),
+                    onSurface: Colors.grey,
+                    side: BorderSide(color: Colors.black, width: 1),
+                    elevation: 20,
+                    minimumSize: Size(150,50),
+                  ),
                 onPressed: () {
                   var sex = ('M' == sexo.text)?0:1;
                   Navigator.pop(context, Contact(nome.text, sex, telefone.text, email.text,));
                   ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
+                      .showSnackBar(SnackBar(content: Text('Saving contact...')));
                 },
                 child: Text('Submit'),
               ),
