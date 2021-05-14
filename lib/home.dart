@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'contacts.dart';
 import 'contactDetails.dart';
+import 'addContacts.dart';
 
 class ContactListScreen extends StatefulWidget {
   ContactListScreen() : super();
@@ -16,11 +17,18 @@ class _ContactListScreenState extends State<ContactListScreen> {
     Contact('Aline', 1, '1234', 'blabla@email.com')
   ];
 
-  void _addContact() {
-    // implementar depois
-    //setState(() {
-    //  _counter++;
-    //});
+  void _addContact() async {
+
+    final retorno = await Navigator.push(context, 
+
+    MaterialPageRoute(builder: (context) => ContactForm()),
+
+    );
+
+
+
+    contactList.add(retorno);
+
   }
 
   @override
@@ -30,7 +38,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
         title: Text('Contact List'),
       ),
       body: ListView.builder(
-        itemCount: contactList.length - 1,
+        itemCount: contactList.length,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(contactList[index].name),

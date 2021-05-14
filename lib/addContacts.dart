@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'contacts.dart';
+
 class ContactForm extends StatefulWidget {
   @override
   ContactFormState createState() {
@@ -21,17 +23,38 @@ class ContactFormState extends State<ContactForm> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                // The validator receives the text that the user has entered.
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
+                decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Insert your name here',
+                labelText: 'Name',
+                ),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Insert your email here',
+                labelText: 'Email',
+                ),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Insert your telefone number here',
+                labelText: 'Telefone Number',
+                ),
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                icon: Icon(Icons.person),
+                hintText: 'Insert M for Man or F for Woman',
+                labelText: 'Sex',
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/contactDetails');
+                  Navigator.pop(context, Contact('Joao', 1, '431212', 'email@email.com'));
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('Processing Data')));
                 },
                 child: Text('Submit'),
               ),
