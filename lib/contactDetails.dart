@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'contacts.dart';
 
 class ContactDetails extends StatelessWidget {
-  final contact = ModalRoute.of(context)!.settings.arguments as Contact;
+  final Contact contact;
+
+  ContactDetails({Key key, this.contact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
