@@ -18,6 +18,8 @@ class ContactFormState extends State<ContactForm> {
   bool m = false; 
   bool f = false;
 
+  var sexLetter;
+
   void _printLatestValue() {
     print('${nome.text}');
   }
@@ -83,6 +85,7 @@ class ContactFormState extends State<ContactForm> {
                   setState(() {
                     m = value;
                     f = false;
+                    sexLetter = 'M';
                   });
                 },
               ),
@@ -92,6 +95,7 @@ class ContactFormState extends State<ContactForm> {
                   setState(() {
                     f = value;
                     m = false;
+                    sexLetter = 'F';
                   });
                 },
               ),
@@ -110,7 +114,7 @@ class ContactFormState extends State<ContactForm> {
                   minimumSize: Size(150,50),
                 ),
                 onPressed: () {
-                  var sex = ('M' == sexo.text)?0:1;
+                  var sex = ('M' == sexLetter)?0:1;
                   Navigator.pop(context, Contact(nome.text, sex, telefone.text, email.text,));
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text('Processing Data')));
