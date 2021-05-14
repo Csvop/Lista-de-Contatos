@@ -32,15 +32,15 @@ class _ContactListScreenState extends State<ContactListScreen> {
             return ListTile(
                 title: Text(contactList[index].name),
                 onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(
-                            builder: (context) => ContactDetails(contact: contactList[index]),
-                        ),
-                    );
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => ContactDetails(contact: contactList[index]),
+                    //     ),
+                    // );
                 },
             );
         },
-    );
+    ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addContact,
         tooltip: 'Add Contact',

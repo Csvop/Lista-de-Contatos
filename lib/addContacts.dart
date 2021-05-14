@@ -18,7 +18,6 @@ class ContactFormState extends State<ContactForm> {
       ),
       body: Center(
         child: Form(
-          key: _formKey,
           child: Column(
             children: <Widget>[
               TextFormField(
@@ -29,6 +28,12 @@ class ContactFormState extends State<ContactForm> {
                   }
                   return null;
                 },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/contactDetails');
+                },
+                child: Text('Submit'),
               ),
             ],
           ),
