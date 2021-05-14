@@ -10,8 +10,11 @@ class ContactListScreen extends StatefulWidget {
 }
 
 class _ContactListScreenState extends State<ContactListScreen> {
-
-  List<Contact> contactList = [Contact('Arthur', 0, '1234', 'blabla@email.com'), Contact('Bruno', 0, '1234', 'blabla@email.com' ), Contact('Aline', 1, '1234', 'blabla@email.com' )];
+  List<Contact> contactList = [
+    Contact('Arthur', 0, '1234', 'blabla@email.com'),
+    Contact('Bruno', 0, '1234', 'blabla@email.com'),
+    Contact('Aline', 1, '1234', 'blabla@email.com')
+  ];
 
   void _addContact() {
     // implementar depois
@@ -27,20 +30,22 @@ class _ContactListScreenState extends State<ContactListScreen> {
         title: Text('Contact List'),
       ),
       body: ListView.builder(
-        itemCount: contactList.length,
+        itemCount: contactList.length - 1,
         itemBuilder: (context, index) {
-            return ListTile(
-                title: Text(contactList[index].name),
-                onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => ContactDetails(contact: contactList[index]),
-                    //     ),
-                    // );
-                },
-            );
+          return ListTile(
+            title: Text(contactList[index].name),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ContactDetails(contact: contactList[index]),
+                ),
+              );
+            },
+          );
         },
-    ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addContact,
         tooltip: 'Add Contact',
