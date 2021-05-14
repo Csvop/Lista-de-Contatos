@@ -78,26 +78,40 @@ class ContactFormState extends State<ContactForm> {
                 width: 20,
                 height: 20,
               ),
-              Checkbox(
-                value: m,
-                onChanged: (bool value) {
-                  setState(() {
-                    m = value;
-                    f = false;
-                    sexLetter = 'M';
-                  });
-                },
+              
+              Container(
+                width: 150,
+                height: 50,
+                child: CheckboxListTile(
+                  title: Text('Masculine'),
+                  value: m,
+                  onChanged: (bool value) {
+                    setState(() {
+                      m = value;
+                      f = false;
+                      sexLetter = 'M';
+                    });
+                  },
+                  
+                ),
               ),
-              Checkbox(
-                value: f,
-                onChanged: (bool value) {
-                  setState(() {
-                    f = value;
-                    m = false;
-                    sexLetter = 'F';
-                  });
-                },
+
+              Container(
+                width: 150,
+                height: 50,
+                child: CheckboxListTile(
+                  title: Text('Feminine'),
+                  value: f,
+                  onChanged: (bool value) {
+                    setState(() {
+                      f = value;
+                      m = false;
+                      sexLetter = 'F';
+                    });
+                  },
+                ),
               ),
+              
               Container(
                 width: 20,
                 height: 20,
