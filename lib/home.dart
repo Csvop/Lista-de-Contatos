@@ -19,16 +19,18 @@ class _ContactListScreenState extends State<ContactListScreen> {
 
   void _addContact() async {
 
-    final retorno = await Navigator.push(context, 
+    final newContact = await Navigator.push(context, 
 
     MaterialPageRoute(builder: (context) => ContactForm()),
 
     );
 
 
+    setState(() {
 
-    contactList.add(retorno);
+      contactList.add(newContact);
 
+    });
   }
 
   @override
