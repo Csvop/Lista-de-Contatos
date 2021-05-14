@@ -6,6 +6,8 @@ class Contact {
   int sex; // 0 if man, 1 if woman
   String phoneNumber;
   String email;
+  final Color color =
+      Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
   Contact(this.name, this.sex, this.phoneNumber, this.email);
 
@@ -33,10 +35,7 @@ class ContactAvi extends StatelessWidget {
     return Container(
         width: side,
         height: side,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
-                .withOpacity(1.0)),
+        decoration: BoxDecoration(shape: BoxShape.circle, color: contact.color),
         child: CircleAvatar(
             child:
                 Text(contact.initials(), style: TextStyle(color: Colors.white)),
