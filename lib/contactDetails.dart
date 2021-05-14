@@ -10,12 +10,43 @@ class ContactDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(contact.name),
+        title: Text(""),
       ),
       body: Padding(
           padding: EdgeInsets.all(16.0),
-          child:
-              Row(children: [Text(contact.phoneNumber), Text(contact.email)])),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(child: ContactAvi(contact, 100)),
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  contact.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                contact.phoneNumber,
+                style: TextStyle(
+                  color: Colors.grey[500],
+                ),
+              ),
+              Text(
+                contact.email,
+                style: TextStyle(
+                  color: Colors.grey[500],
+                ),
+              ),
+              Text(
+                (contact.sex == 1) ? 'F' : 'M',
+                style: TextStyle(
+                  color: Colors.grey[500],
+                ),
+              )
+            ],
+          )),
     );
   }
 }
