@@ -25,11 +25,17 @@ class _ContactListScreenState extends State<ContactListScreen> {
 
     );
 
-
     setState(() {
-
-      contactList.add(newContact);
-
+      // if(newContact.name != null){
+      //   print('retorna');
+      // }
+      try{
+        var newContactName = newContact.name;
+        contactList.add(newContact);
+      }
+      on NoSuchMethodError {
+        print('Erro! Contato não informado.');
+      }
     });
   }
 
@@ -43,6 +49,7 @@ class _ContactListScreenState extends State<ContactListScreen> {
         itemCount: contactList.length,
         itemBuilder: (context, index) {
           return ListTile(
+            leading: ContactAvi(contactList[index], 40),
             title: Text(contactList[index].name),
             onTap: () {
               Navigator.push(
